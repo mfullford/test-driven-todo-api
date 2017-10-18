@@ -1,3 +1,4 @@
+
 // wait for DOM to load before running JS
 $(document).ready(function() {
 
@@ -16,6 +17,7 @@ $(document).ready(function() {
   // compile handlebars template
   var source = $('#todos-template').html();
   var template = Handlebars.compile(source);
+
 
   // helper function to render all todos to view
   // note: we empty and re-render the collection each time our todo data changes
@@ -104,17 +106,13 @@ $(document).ready(function() {
           render();
         }
       });
+
     })
 
     // for delete: click event on `.delete-todo` button
+
     .on('click', '.delete-todo', function (event) {
       event.preventDefault();
-
-
-
-
-
-      
 
       // find the todo's id (stored in HTML as `data-id`)
       var todoId = $(this).closest('.todo').attr('data-id');
@@ -124,19 +122,22 @@ $(document).ready(function() {
         return todo._id == todoId;
       })[0];
 
-
-      // DELETE request to delete todo
-      $.ajax({
-        type: 'DELETE',
-        url: baseUrl + '/' + todoId,
-        success: function onDeleteSuccess(json) {
+        $.ajax({
+          type: 'DELETE',
+          url: baseUrl + '/' + todoId,
+          success: function onDeleteSuccess(json) {
           // remove deleted todo from all todos
-          allTodos.splice(allTodos.indexOf(todoToDelete), 1);
+          allTodos.splice(allTodos.indexOf(todoToDelete), 1, json);
 
           // render all todos to view
           render();
         }
-      });
+      })
     });
+
+   
+
+      // DELETE request to delete todo
+
 
 });

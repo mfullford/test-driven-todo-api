@@ -49,8 +49,6 @@ app.get('/search', function searchpage(req, res) {
 });
 
 
-
-
 app.get('/api/todos/search', function search(req, res) {
   /* This endpoint responds with the search results from the
    * query in the request. COMPLETE THIS ENDPOINT LAST.*/
@@ -125,20 +123,24 @@ app.put('/api/todos/:id', function update(req, res) {
 
 
 
-app.delete('/api/todos/:id', function destroy(req, res) {
+   app.delete('/api/todos/:id', function destroy(req, res) {
    // This endpoint will delete a single todo with the
    // * id specified in the route parameter (:id) and respond
-   // * with deleted todo.
-  let myTodo = todos.filter(function(element) {
+   // * with deleted todo
+
+    let myTodo = todos.filter(function(element) {
     //make sure the id's are equal again!
-    return element.id == req.params.id;
-  });
-  let index = todo.indexOf(myCandy[0]);
-  // Remove index of candies array
-  todo.splice(index, 1);
-  // Show message, candy has been deleted
-  res.json(myTodo);  
-});
+      return element.id == req.params.id;
+    });
+    let index = todos.indexOf(mytodo[0]);
+    // Remove index of candies array
+    todos.splice(index, 1);
+    // Show message, candy has been deleted
+    res.json(myTodo); 
+
+
+    });
+
 
 /**********
  * SERVER *
