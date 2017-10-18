@@ -110,6 +110,12 @@ $(document).ready(function() {
     .on('click', '.delete-todo', function (event) {
       event.preventDefault();
 
+
+
+
+
+      
+
       // find the todo's id (stored in HTML as `data-id`)
       var todoId = $(this).closest('.todo').attr('data-id');
 
@@ -117,6 +123,7 @@ $(document).ready(function() {
       var todoToDelete = allTodos.filter(function (todo) {
         return todo._id == todoId;
       })[0];
+
 
       // DELETE request to delete todo
       $.ajax({
